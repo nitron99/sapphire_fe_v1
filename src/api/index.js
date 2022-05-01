@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL : "http://137.184.81.173:3000/"
+    baseURL : "http://167.71.234.121:3000/api"
 })
 
 API.interceptors.request.use((req) => {
@@ -12,4 +12,4 @@ API.interceptors.request.use((req) => {
     return req;
 });
 
-export const login = (formData) => API.post();
+export const login = (formData) => API.post(`v1/user/login` , formData);

@@ -1,4 +1,4 @@
-import * as actionTypes from "../actionType";
+import * as actionTypes from "../actionTypes";
 
 const initialState = {
     user : true
@@ -6,6 +6,12 @@ const initialState = {
 
 const AuthReducer = (state = initialState ,action) => {
     switch (action.type) {
+        case actionTypes.LOGIN: 
+            sessionStorage.setItem("user" , JSON.stringify({ ...action?.payload}));
+            return {
+                ...state,
+                user: action.payload
+            }
         default:
           return state;
       }

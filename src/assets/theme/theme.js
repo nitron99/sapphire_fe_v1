@@ -7,6 +7,7 @@ export const lightTheme = createTheme({
         }
     },
 
+
     components: {
         MuiButton: {
             styleOverrides: {
