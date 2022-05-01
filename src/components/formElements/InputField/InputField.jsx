@@ -7,10 +7,10 @@ const InputField = ({label, placeholder, value, name , onChange , autoFocus , ty
 
   return (
     <Grid>
-        <FormHelperText className={`${classLabel} classes.input_label`}>{label}</FormHelperText>
+        <FormHelperText className={`${classLabel} ${classes.input_label}`}>{label}</FormHelperText>
         <TextField 
             fullWidth
-            className={`${classField} classes.input`}
+            className={`${classField} ${classes.input}`}
             variant='outlined'
             onChange={onChange}
             name={name}

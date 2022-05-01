@@ -47,7 +47,7 @@ const LandingPage = ({props}) => {
                         <Typography className={classes.landingPage_text1} fontSize={18} fontWeight={500}>Built on solana blockchain architecture</Typography>
                     </Box>
                     <a href="https://solana.com/developers" rel="noreferrer" target="_blank" className={classes.landingPage_link}>
-                        <Buttons className={classes.landingPage_exploreBtn} onClick={() => redirectHandler(1)}>Explore</Buttons>
+                        <Buttons className={classes.landingPage_exploreBtn}>Explore</Buttons>
                     </a>
                 </Box>
             </Box>
