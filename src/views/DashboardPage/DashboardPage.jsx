@@ -21,7 +21,6 @@ const DashboardPage = () => {
       <NavBar />
       <Typography sx={{paddingTop: "100px"}}>This is Dashboard Page / profile Page </Typography>
       {/* <Buttons className={classes.logout_btn} Text="Logout" onClick={onClickHandler}/> */}
-
     </Box>
   )
 }

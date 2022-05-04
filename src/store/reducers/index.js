@@ -3,6 +3,7 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import AuthReducers from "./AuthReducer";
+import NftReducers from "./NftReducer";
 
 const persistConfig = {
     key : "root",
@@ -12,6 +13,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     auth : AuthReducers,
+    nft : NftReducers
 })
 
 export default persistReducer(persistConfig, rootReducer);

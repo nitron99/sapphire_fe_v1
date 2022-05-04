@@ -17,3 +17,23 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+/* width */
+::-webkit-scrollbar {
+  max-width: 7px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00cc99; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(26, 110, 93); 
+}
+
+::selection {
+  color: white;
+  background: #3A7865;
+}

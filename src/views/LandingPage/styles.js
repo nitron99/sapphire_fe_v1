@@ -3,24 +3,34 @@ import { makeStyles } from "@mui/styles";
 export default makeStyles((theme) => ({
     landingPageContainer: {
         width: "100%",
-        height: "100vh",
-        backgroundColor: "#5e5e5e",
+        height: "100%",
+        backgroundColor: theme.palette.background.white,
     },
     landingPage: {
         paddingTop: "72px",
-        width: "80vw",
+        width: "1300px",
+        [theme.breakpoints.down('xl')] : {
+            width: "1000px",
+        },
+        [theme.breakpoints.down('lg')] : {
+            width: "800px",
+        },
+        [theme.breakpoints.down('md')] : {
+            width: "600px",
+        },
+        [theme.breakpoints.down('sm')] : {
+            width: "80%",
+        },
         height: "100%",
-        backgroundColor: "#5e5e5e",
+        padding: "20px",
+        // backgroundColor: "#5e5e5e",
+        backgroundColor: theme.palette.background.white,
         margin: "auto"
     },
     landingPage_topContent: {
-        backgroundColor: "white",
+        backgroundColor: theme.palette.background.white,
         width: "100%",
         height: "600px",
-        borderRadius: "30px",
-        padding: "50px",
-        margin: "30px 0px 30px 0px",
-
     },
     landingPage_topContentLeft: {
         width: "60%",
@@ -31,8 +41,9 @@ export default makeStyles((theme) => ({
         alignItems:"start",
         justifyContent: "center",
     },
-    landingPage_bottomContent: {
-        backgroundColor: "white",
+    landingPage_solana: {
+        backgroundColor: theme.palette.background.lightGrey,
+        color: theme.palette.text.white,
         width: "100%",
         height: "120px",
         borderRadius: "30px",
@@ -51,9 +62,34 @@ export default makeStyles((theme) => ({
         backgroundColor: "#5e5e5e",
         padding: "15px 30px 15px 30px",
         borderRadius: "15px",
-        fontSize: "20px"
+        fontSize: "20px",
+        color:"white"
     },
     landingPage_link: {
         textDecoration: "none"
+    },
+    landingPage_bottomContent1: {
+        backgroundColor: theme.palette.background.white,
+        color: theme.palette.text.main,
+        width: "100%",
+        height: "600x",
+        borderRadius: "30px",
+        margin: "30px 0px 30px 0px",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding:"30px",
+    },
+    landingPage_bottomContent2: {
+        backgroundColor: theme.palette.background.lightGrey,
+        color: theme.palette.text.white,
+        width: "100%",
+        height: "600x",
+        borderRadius: "30px",
+        margin: "30px 0px 30px 0px",
+        display: "flex",
+       
+        padding:"30px",
     }
 }))

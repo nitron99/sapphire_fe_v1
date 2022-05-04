@@ -3,8 +3,34 @@ import { createTheme } from "@mui/material";
 export const lightTheme = createTheme({
     palette:{
         primary: {
-            main: "#000",
-        }
+            main: "#00e6ac",
+            dark: "#00cc99"
+        },
+        text: {
+            main: "#000000",
+            sub: "#4a4a4a",
+            dark: "#000",
+            white: "#fff",
+        },
+        background: {
+            white: "#ffffff",
+            lightGrey: "#333333",
+            // darkGrey: "#262626",
+            darkGrey: "#fff",
+        },
+        white: "#fff",
+
+    },
+
+    breakpoints: {
+        values: {
+          xs: 300,
+          sm: 600,
+          md: 800,
+          lg: 1000,
+          xl: 1299,
+          xxl: 1536,
+        },
     },
 
 
@@ -24,6 +50,13 @@ export const lightTheme = createTheme({
                 },
             },
         },
+        MuiTypography: {
+            styleOverrides: {
+                root: {
+                    fontFamily: "Poppins"
+                },
+            },
+        },
     }
 });
 
@@ -32,6 +65,16 @@ export const darkTheme = createTheme({
         primary: {
             main: "#fff",
         }
+    },
+
+    breakpoints: {
+        values: {
+          xs: 0,
+          sm: 600,
+          md: 800,
+          lg: 1400,
+          xl: 1536,
+        },
     },
 
     components: {
@@ -47,6 +90,13 @@ export const darkTheme = createTheme({
                     paddingLeft: "20px",
                     paddingRight: "20px",
                     boxShadow: "0 0 5px 1px rgba(219, 219, 219, 0.25)",
+                },
+            },
+        },
+        MuiTypography: {
+            styleOverrides: {
+                root: {
+                    fontFamily: "Poppins"
                 },
             },
         },

@@ -13,6 +13,18 @@ export const Login = (formData, navigate) => async (dispatch) => {
     }
 }
 
+export const Signup = (formData, navigate) => async (dispatch) => {
+    try{
+        const { data } = await api.signup(formData);
+        if (data) {
+            dispatch({ type: actionTypes.SIGNUP, payload: data});
+        }
+        navigate("/dashboard");
+    }catch (error) {
+        dispatch({ type: actionTypes.ERROR, payload: error});
+    }
+}
+
 export const Logout = (navigate) => async (dispatch) => {
     try{
         dispatch({ type: actionTypes.LOGOUT });
@@ -22,3 +34,4 @@ export const Logout = (navigate) => async (dispatch) => {
         console.log(error);
     }
 }
+
