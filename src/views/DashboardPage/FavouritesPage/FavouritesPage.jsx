@@ -31,7 +31,7 @@ const FavouritesPage = () => {
             {favouriteData?.data?.map((item, index) => {
                 return(
                     <Box className={classes.favourites_list_item} key={index}>
-                        <Box className={classes.favourites_img}>
+                        <Box className={classes.favourites_img}  onClick={() => navigate(`/collection/${item?.artId?._id}`)}>
                             <img src={`https://sapphire-v3.fra1.digitaloceanspaces.com/collection/${item?.artId?.imageUrl}.png`} alt=''
                               className={classes.nft_Image} />                            
                         </Box>

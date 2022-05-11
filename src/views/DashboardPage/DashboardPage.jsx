@@ -86,7 +86,7 @@ const DashboardPage = () => {
             <Box className={classes.dashboard_manageContainer} >
                 <Box className={classes.dashboard_manageItems}
                   onClick={() => onRedirectHandler(0)}>
-                  <Typography fontSize={20} fontWeight={600}>Transactions</Typography>
+                  <Typography fontSize={20} fontWeight={600}>Invoices</Typography>
                 </Box>
                 <Box className={classes.dashboard_manageItems}
                   onClick={() => onRedirectHandler(1)}>

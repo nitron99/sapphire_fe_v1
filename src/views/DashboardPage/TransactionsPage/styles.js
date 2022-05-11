@@ -29,6 +29,34 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
     },
+    transactions_item: {
+        width: "100%",
+        padding: "15px",
+        height: "135px",
+        marginBottom: "20px",
+        borderRadius: "20px",
+        backgroundColor: theme.palette.background.white,
+        borderWidth:"3px",
+        borderColor: theme.palette.background.border,
+        borderStyle:"solid" ,
+        color: theme.palette.text.main,
+        display: "flex",
+        flexDirection: "row",
+
+    },
+    transactions_receipt: {
+        width: "120px",
+        marginLeft: "auto",
+        marginTop: "auto",
+        marginBottom: "auto",
+        marginRight: "20px"
+    },
+    landingPage_link: {
+        textDecoration: "none",
+        marginLeft: "auto",
+        marginTop: "auto",
+        marginBottom: "auto",
+    },
 }))
 
 export default useStyles

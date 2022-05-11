@@ -48,6 +48,13 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        "& #inputTag": {
+            display: "none"
+        },
+        "& label": {
+            display: "flex",
+            flexDirection: "column"
+        }
        
     },
     
@@ -69,13 +76,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        "& #inputTag": {
-            display: "none"
-        },
-        "& label": {
-            display: "flex",
-            flexDirection: "column"
-        }
+      
     },
     create_form: {
         color: "#000",

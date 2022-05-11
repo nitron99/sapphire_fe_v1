@@ -1,13 +1,207 @@
-// import React, { useState, useEffect } from "react";
-// import useStyles from "./styles";
-// import * as actionTypes from "../../../store/actionTypes";
-// import { useDispatch, useSelector } from "react-redux";
-// import { Dialog, DialogTitle, DialogContent, DialogContentText, IconButton } from "@mui/material";
-// import LoadingButton from "@mui/lab/LoadingButton";
-// import Close from "@mui/icons-material/Close";
-// import InputField from "../../../components/formElements/InputField/InputField";
-// import { CreateBid } from "../../../store/actions/TradeAction";
+import React, { useState, useEffect } from "react";
+import useStyles from "./styles";
+import * as actionTypes from "../../../store/actionTypes";
+import { useDispatch, useSelector } from "react-redux";
+import { Dialog, DialogTitle, DialogContent, DialogContentText, IconButton } from "@mui/material";
+import LoadingButton from "@mui/lab/LoadingButton";
+import Button from "../../../components/formElements/button/Button";
+import Close from "@mui/icons-material/Close";
+import InputField from "../../../components/formElements/InputField/InputField";
+import { CreateBid } from "../../../store/actions/TradeAction";
+import { AddMoneytoWallet } from "../../../store/actions/WalletAction";
+import {
+    CardElement,
+    Elements,
+    useElements,
+    useStripe
+  } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { message as messageToast } from "antd";
+import { Formik } from "formik";
 
+const Data = { amount: "" };
+
+const Stripe_Private_key = "pk_test_51I475HIdMjerK5lwrVjdR8S82kcuXg4UebgvVlfboxNuBhbjpWrugcu7iq85vLo7C7WF5Nx3gUj1SHRtcWrKp29b00vx5pSced";
+const stripePromise = loadStripe(Stripe_Private_key);
+
+const CARD_OPTIONS = {
+    iconStyle: "solid",
+    style: {
+      base: {
+        iconColor: "#000",
+        fontWeight: 500,
+        fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
+        fontSize: "16px",
+        fontSmoothing: "antialiased",
+        ":-webkit-autofill": {
+          color: "#fff"
+        },
+        "::placeholder": {
+          color: "#000"
+        }
+      },
+      invalid: {
+        iconColor: "#ff001a"
+      }
+    }
+  };
+
+  const CardField = ({ onChange }) => (
+    <CardElement
+      options={CARD_OPTIONS}
+      className="border-info border p-3 rounded"
+      onChange={onChange}
+    />
+  );
+
+  const CheckoutForm = () => {
+    const [error, setError] = useState(null);
+    const classes = useStyles();
+    const dispatch = useDispatch();
+    const [cardComplete, setCardComplete] = useState(false);
+    const [card, setCard] = useState(null);
+    const [processing, setProcessing] = useState(false)
+    const [formData, setFormData] = useState(Data);
+
+    const stripe = useStripe();
+    const elements = useElements();
+   
+
+    const handleSubmit = (e) => {
+        setProcessing(true)
+        console.log(formData)
+        stripe.createToken(elements.getElement(CardElement)).then(result => {
+            const { token, error } = result
+            console.log(result)
+            if (error) {
+                const errorElement = document.getElementById("card-errors");
+                // errorElement.textContent = error.message;
+                setProcessing(false);
+            }else{
+                setFormData({...formData, source: token.id, amount: parseInt(formData.amount), amountWithOutTax: parseInt(formData.amount)})
+                dispatch(AddMoneytoWallet(formData))
+                    // .then(() => 
+                    //     status => {
+                    //         console.log(status);
+                    //         // if(status)
+                    //         // {
+                    //             if (
+                    //                 status.statusCode === 400 ||
+                    //                 status.statusCode === 401 ||
+                    //                 status.statusCode === 402 ||
+                    //                 status.statusCode === 403
+                    //               ) {
+                    //                 messageToast.error(`${status.raw.message}`);
+                    //                 setProcessing(false);
+                    //               } else {
+                    //                 messageToast.success("Your request has been processed");
+                    //                 setProcessing(false);
+                    //               }
+                    //         // }
+                           
+                    //       }
+                    
+                    //     )
+                console.log(formData)
+            }
+            
+        })
+        
+    };
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    return(
+        <>
+            <InputField 
+                name="amount" 
+                label="Amount" 
+                value={formData.amount} 
+                onChange={handleChange} 
+                classField={classes.create_form} 
+                classLabel={classes.create_label}
+            />
+            <CardField
+                onChange={e => {
+                setError(e.error);
+                setCardComplete(e.complete);
+                setCard(e.complete)
+                }}
+            />
+            <Button Text="Submit" onClick={handleSubmit}/>
+        </>
+      )
+  }
+
+const AddMoneyModel = ({open, setOpen, title, id , cards}) => {
+      const scroll = "paper";
+      const classes = useStyles();
+      const dispatch = useDispatch();
+      const [enableSave, setEnableSave] = useState(false);
+      const [loading, setLoading] = useState(false);
+      const [errors, setErrors] = useState({});
+     
+    
+    
+      const handleClose = () => {
+        setOpen(false);
+      };
+    
+      const descriptionElementRef = React.useRef(null);
+    
+      useEffect(() => {
+        if (open) {
+          const { current: descriptionElement } = descriptionElementRef;
+          if (descriptionElement !== null) {
+            descriptionElement.focus();
+          }
+        }
+        setEnableSave(false);
+        setLoading(false);
+        setErrors({});
+      }, [open]);
+    
+     
+    //     const handleChange = (e) => {
+    //     setFormData({ ...formData, [e.target.name]: e.target.value });
+    //     setEnableSave(true);
+    //     setLoading(false);
+    //   };
+    
+      return (
+        <Dialog open={open} fullWidth
+        maxWidth="xs" onClose={handleClose} scroll={scroll} aria-labelledby="scroll-dialog-title" aria-describedby="scroll-dialog-description">
+          <DialogTitle id="scroll-dialog-title">
+            {title}
+            <IconButton
+              onClick={handleClose}
+              sx={{
+                position: "absolute",
+                right: 8,
+                top: 12,
+                color: (theme) => theme.palette.grey[500],
+              }}
+            >
+              <Close />
+            </IconButton>
+          </DialogTitle>
+    
+          <DialogContent dividers={scroll === "paper"}>
+            <DialogContentText sx={{ whiteSpace: "pre-wrap" }} id="scroll-dialog-description" ref={descriptionElementRef} tabIndex={-1}>
+             
+              <Elements stripe={stripePromise}>
+                <CheckoutForm />
+            </Elements>
+              
+            </DialogContentText>
+          </DialogContent>
+        </Dialog>
+      );
+    };
+    
+export default AddMoneyModel;
 // import {
 //     CardElement,
 //     Elements,

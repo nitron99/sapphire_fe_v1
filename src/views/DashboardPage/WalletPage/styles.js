@@ -61,6 +61,30 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.lightGrey,
         color: theme.palette.primary.main,
         cursor: "pointer",
+    },
+    create_form: {
+        color: "#000",
+        marginBottom: "30px",
+        "& .MuiOutlinedInput-root": {
+            '& fieldset': {
+                borderColor: 'black',
+                borderWidth: '2px',
+            },
+            '&:hover fieldset': {
+                borderColor: '#08ffa0',
+            },
+            color : "#000",
+            borderRadius: "10px",
+            fontFamily: "Poppins",
+        },
+        "& .MuiOutlinedInput-border": {
+            borderColor: "#4B0767"
+        }
+    },
+    create_label: {
+        color: "#000",
+        fontSize: "14px",
+        fontWeight: "500"
     }
 }))
 

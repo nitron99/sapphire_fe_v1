@@ -21,6 +21,7 @@ const NavBar = () => {
     const location = useLocation();
     const user = JSON.parse(sessionStorage.getItem("user"));
     const { favouriteData } = useSelector((state) => (state.nft))
+    const { users } = useSelector((state) => (state.auth))
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -37,7 +38,7 @@ const NavBar = () => {
     }, [location]);
 
     useEffect(() => {
-      if(Object.keys(favouriteData).length === 0){
+      if(!favouriteData){
         dispatch(GetFavouriteNFT())
       }
     },[])
@@ -135,7 +136,7 @@ const NavBar = () => {
                   <MenuItem
                    onClick={() => onRedirectHandler(1)}
                   sx={{color : "#000"}}>
-                    <Typography fontSize={14} fontWeight={600}>Balance - ₹{user?.data?.user?.wallet/10}</Typography>
+                    <Typography fontSize={14} fontWeight={600}>Balance - ₹{users?.data?.user?.wallet/100}</Typography>
                   </MenuItem>
                   <Divider />
                   <MenuItem
@@ -144,7 +145,7 @@ const NavBar = () => {
                       <Receipt sx={{color : "#000"}} />
                     </ListItemIcon>
                     <Typography sx={{color : "#000"}}>
-                      Transactions
+                      Invoices
                     </Typography>
                   </MenuItem>
                   <MenuItem
@@ -165,7 +166,7 @@ const NavBar = () => {
                       Favourites
                     </Typography>
                   </MenuItem>
-                  <MenuItem
+                  {/* <MenuItem
                    onClick={() => onRedirectHandler(5)}>
                     <ListItemIcon>
                       <Settings sx={{color : "#000"}}/>
@@ -173,7 +174,7 @@ const NavBar = () => {
                     <Typography sx={{color : "#000"}}>
                       Settings
                     </Typography>
-                  </MenuItem>
+                  </MenuItem> */}
                   <MenuItem
                     onClick={() => onRedirectHandler(6)}>
                     <ListItemIcon>

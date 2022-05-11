@@ -31,15 +31,29 @@ export default makeStyles((theme) => ({
         backgroundColor: theme.palette.background.white,
         width: "100%",
         height: "600px",
+        display: "flex",
+        flexDirection: "row",
     },
     landingPage_topContentLeft: {
-        width: "60%",
+        width: "45%",
         height: "100%",
         borderRadius: "20px",
         display: "flex",
         flexDirection:"column",
         alignItems:"start",
         justifyContent: "center",
+    },
+    landingPage_topContentRight: {
+        width: "55%",
+        height: "100%",
+        borderRadius: "20px",
+        display: "flex",
+        flexDirection:"column",
+    },
+    landingPage_mainImage: {
+        borderRadius: "20px",
+        marginTop:"100px",
+        boxShadow: "0 10px 15px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
     },
     landingPage_solana: {
         backgroundColor: theme.palette.background.lightGrey,

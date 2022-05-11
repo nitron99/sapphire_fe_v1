@@ -14,13 +14,13 @@ import * as api from "../../api/index";
 //     }
 // }
 
-export const NftUploader = ( formData ) => async (dispatch) => {
+export const NftUploader = ( formData, navigate ) => async (dispatch) => {
     try{
         const { data } = await api.nftUpload(formData);
         if (data) {
             dispatch({ type: actionTypes.NFTUPLOAD, payload: data});
         }
-        
+        navigate(`/collection/${data?.data?._id}`)
     }catch (error) {
         dispatch({ type: actionTypes.ERROR, payload: error});
         console.log(error)

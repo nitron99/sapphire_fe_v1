@@ -1,14 +1,20 @@
 import * as actionTypes from "../actionTypes";
 
 const initialState = {
+    nftresponse: {},
     nftData : {},
     myNftData : {},
     homeNftData : {},
-    favouriteData : {},
+    favouriteData : null,
 };
 
 const NftReducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.NFTUPLOAD:
+            return {
+                ...state,
+                nftresponse: action?.payload
+            }
         case actionTypes.GETNFT: 
             return {
                 ...state,

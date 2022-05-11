@@ -15,12 +15,14 @@ const LoginPage = ({change}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [formData, setFormData] = useState(form);
-
+    const [showPwd, setShowPwd] = useState(true)
     const changeHandler = () => {change(1)}
 
     const onChangeHandler = (e) => {
         setFormData({ ...formData, [e.target.name] : e.target.value})
     }
+
+    const handleShowPassword = () => setShowPwd((prevShowPassword) => !prevShowPassword);
 
     const onSubmitHandler = () => {
         console.log(formData)
@@ -38,7 +40,7 @@ const LoginPage = ({change}) => {
         </Box>
         <Box className={classes.Login_input}>
             <InputField label="Email" name="email" onChange={onChangeHandler}/>
-            <InputField label="Password" name="password" onChange={onChangeHandler}/>
+            <InputField label="Password" name="password" onChange={onChangeHandler} handleShowPassword={handleShowPassword}  type={showPwd ? "text" : "password"}/>
             <Typography className={classes.Login_forget} onClick={redirectHandler}>Forget Password?</Typography>
             <Button Text="Login" className={classes.Login_btn} onClick={onSubmitHandler} />
         </Box>

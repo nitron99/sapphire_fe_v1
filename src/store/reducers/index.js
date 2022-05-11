@@ -6,6 +6,7 @@ import AuthReducers from "./AuthReducer";
 import NftReducers from "./NftReducer";
 import UserReducers from "./UserReducer";
 import TradeReducers from "./TradeReducer";
+import WalletReducers from "./WalletReducer";
 
 const persistConfig = {
     key : "root",
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
     nft : NftReducers,
     user : UserReducers,
     trade : TradeReducers,
+    wallet: WalletReducers
 })
 
 export default persistReducer(persistConfig, rootReducer);

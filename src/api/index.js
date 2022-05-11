@@ -25,6 +25,7 @@ export const getAllNFT = () => API.get(`/collection`);
 
 // trading APIs
 export const getTradeByID = (id) => API.get(`/trade/artTrade/${id}`);
+export const createTrade = (formData) => API.post(`/trade/createTrade`, formData);
 
 //favourites
 export const getFavouriteNFT = () => API.get(`/favourites/myFavourites`);
@@ -33,3 +34,8 @@ export const createFavourite = (formData) => API.post(`/favourites/createFavouri
 //bidding
 export const createBid = (formData) => API.post(`/auction/createBid`, formData)
 export const getBidData = (id) => API.get(`/auction/ArtBid/${id}`)
+
+//payment
+export const addMoneytoWallet = (formData) => API.post(`/purchase/addMoneyToWallet`, formData)
+export const getCards = () => API.get(`/purchase/cards`)
+export const getInvoices = () => API.get(`/purchase/invoices`)

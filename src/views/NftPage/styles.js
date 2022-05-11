@@ -31,7 +31,7 @@ export default makeStyles((theme) => ({
     },
     nftPage_content1: {
         width: "100%",
-        minHeight:"600px",
+        minHeight:"400px",
         height: "100%",
         marginTop: "20px",
         borderRadius: "20px",
@@ -84,7 +84,7 @@ export default makeStyles((theme) => ({
         borderRadius: "20px",
         backgroundColor:"White",
         display:"flex", 
-        flexDirection: "row",
+        flexDirection: "column",
         padding: "20px",
         borderWidth:"3px",
         borderColor: theme.palette.background.border,
@@ -120,6 +120,58 @@ export default makeStyles((theme) => ({
         fontFamily: "Poppins",
         fontSize: "18px",
         borderRadius: "10px",
+    },
+    nftPage_content_bids: {
+        width: "100%",
+        padding: "15px",
+        height: "80px",
+        marginBottom: "15px",
+        borderRadius: "10px",
+        backgroundColor: theme.palette.background.lightGrey,
+        color: theme.palette.white,
+        display: "flex",
+        flexDirection: "row",
+    },
+///////////////////////////////////////////////////////sell model
+    sell_conatiner: {
+        display:"flex",
+        flexDirection:"row",
+        justifyContent: "space-evenly",
+        padding: "20px",
+
+    },
+    sell_slow: {
+        display:"flex",
+        flexDirection:"column",
+        borderRadius: "20px",
+        padding: "20px",
+        width:"50%",
+        height:"200px",
+        backgroundColor: theme.palette.background.lightGrey,
+        color: theme.palette.white,
+    },
+    sell_fast: {
+        display:"flex",
+        flexDirection:"column",
+        borderRadius: "20px",
+        padding: "20px",
+        width:"50%",
+        height:"200px",
+        marginRight: "30px",
+        cursor: "pointer",
+        backgroundColor: theme.palette.background.lightGrey,
+        color: theme.palette.white,
+        borderWidth: "3px",
+        borderColor: theme.palette.background.lightGrey,
+        borderStyle: "solid",
+    },
+    sell_selected: {
+        color: theme.palette.primary.main,
+        borderWidth: "3px",
+        borderColor: theme.palette.primary.main,
+        borderStyle: "solid",
     }
+
+
 
 }))

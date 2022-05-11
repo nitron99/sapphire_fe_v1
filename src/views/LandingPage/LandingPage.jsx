@@ -5,6 +5,7 @@ import { Box, Button as Buttons, Typography } from "@mui/material";
 import NavBar from "../../components/navbar/NavBar";
 import Button from "../../components/formElements/button/Button";
 import AuthPage from "../AuthPage/AuthPage";
+import imge from "../../assets/landing.jpg";
 
 const LandingPage = ({props}) => {
     const classes = useStyles();
@@ -33,13 +34,14 @@ const LandingPage = ({props}) => {
                         </Box>
                     </Box>
                     <Box className={classes.landingPage_topContentRight}>
-
+                      
+                        <img src={imge} alt="" className={classes.landingPage_mainImage}/>
                     </Box>
                 </Box>
                 <Box className={classes.landingPage_solana}>
                     <Box>
-                        <Typography className={classes.landingPage_text1} fontSize={30} fontWeight={700}>Explore Solana BlockChain</Typography>
-                        <Typography className={classes.landingPage_text1} fontSize={18} fontWeight={500}>Built on solana blockchain architecture</Typography>
+                        <Typography className={classes.landingPage_text1} fontSize={30} fontWeight={700}>Explore Ethereum BlockChain</Typography>
+                        <Typography className={classes.landingPage_text1} fontSize={18} fontWeight={500}>Built on Ethereum blockchain architecture</Typography>
                     </Box>
                     <a href="https://solana.com/developers" rel="noreferrer" target="_blank" className={classes.landingPage_link}>
                         <Buttons className={classes.landingPage_exploreBtn}>Explore</Buttons>

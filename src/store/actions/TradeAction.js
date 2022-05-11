@@ -36,3 +36,18 @@ export const GetBidData = (id) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const CreateTrade = (formData , setLoading) => async (dispatch) => {
+    setLoading(true)
+    try{
+        const { data } = await api.createTrade(formData);
+        if (data) {
+            dispatch({ type: actionTypes.CREATE_TRADE, payload: data});
+        }
+        setLoading(false)
+    }catch (error) {
+        dispatch({ type: actionTypes.ERROR, payload: error});
+        console.log(error)
+        setLoading(false)
+    }
+}

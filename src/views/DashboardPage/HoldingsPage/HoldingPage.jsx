@@ -19,9 +19,9 @@ const HoldingsPage = () => {
         dispatch(GetMyNFT())
     },[])
 
-    useEffect(()=>{
-        console.log(myNftData)
-    },[myNftData])
+    // useEffect(()=>{
+    //     console.log(myNftData)
+    // },[myNftData])
 
   return (
     <Box className={classes.holdings_container}>
@@ -31,7 +31,7 @@ const HoldingsPage = () => {
             {myNftData?.data?.map((item, index) => {
                 return(
                     <Box className={classes.holdings_list_item} key={index}>
-                        <Box className={classes.holdings_img}>
+                        <Box className={classes.holdings_img} onClick={() => navigate(`/collection/${item?._id}`)}>
                             <img src={`https://sapphire-v3.fra1.digitaloceanspaces.com/collection/${item.imageUrl}.png`} alt=''
                                 className={classes.nft_Image} />                            
                         </Box>

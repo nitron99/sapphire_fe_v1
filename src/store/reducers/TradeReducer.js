@@ -3,7 +3,8 @@ import * as actionTypes from "../actionTypes";
 const initialState = {
     tradeData : {},
     bidData: {},
-    nftBidData: {}
+    nftBidData: {},
+    createTradeData: {}
 };
 
 const TradeReducer = (state = initialState, action) => {
@@ -22,6 +23,11 @@ const TradeReducer = (state = initialState, action) => {
             return {
                 ...state,
                 nftBidData: action?.payload
+            }
+        case actionTypes.CREATE_TRADE: 
+            return {
+                ...state,
+                createTradeData: action?.payload
             }
         default:
           return state;
