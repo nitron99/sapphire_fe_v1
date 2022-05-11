@@ -13,7 +13,6 @@ const UserPage = () => {
 
   return (
      <Box className={classes.userPage_container}>
-          <NavBar />
           <Box className={classes.userPage}>
             <Box className={classes.nftPage_content}>
             this is users page

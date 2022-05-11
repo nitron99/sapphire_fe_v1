@@ -38,12 +38,19 @@ export default makeStyles((theme) => ({
     },
     navbar_links_item: {
         padding: "10px 20px 10px 20px",
+        height: "100%",
         borderRadius: "15px",
         fontWeight: "600",
         fontSize: "18px",
         backgroundColor: theme.palette.white,
         fontFamily: "Poppins",
-        color: theme.palette.text.sub
+        color: theme.palette.text.sub,
+        borderStyle: "solid",
+        borderColor: "white"
        
+    },
+    navbar_links_itemSelected: {
+        borderStyle: "solid",
+        borderColor: theme.palette.primary.main
     }
 }))

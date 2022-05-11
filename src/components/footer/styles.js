@@ -25,8 +25,12 @@ export default makeStyles((theme) => ({
     footer_contentLeft: {
         width: "40%",
         height: "400px",
-        paddingRight: "100px",
-        paddingTop: "50px",
+        // paddingRight: "100px",
+        // paddingTop: "50px",
+        display: "flex",
+        flexDirection:"column",
+        justifyContent: "center",
+        alignItems: "start"
         
     },
     footer_contentRight: {
@@ -38,10 +42,19 @@ export default makeStyles((theme) => ({
     footer_contentRight_col1: {
         width: "50%",
         height: "400px",
+        display: "flex",
+        flexDirection:"column",
+        justifyContent: "start",
+        alignItems: "center"
     },
     footer_contentRight_col2: {
         width: "50%",
         height: "400px",
+        display: "flex",
+        flexDirection:"column",
+        justifyContent: "start",
+        alignItems: "center",
+        
     }
     
 }))

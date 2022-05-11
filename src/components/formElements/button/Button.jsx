@@ -3,7 +3,7 @@ import useStyles from './styles';
 import { Button } from '@mui/material';
 import clsx from "clsx";
 
-const InputField = ({Text, onClick, className}) => {
+const InputField = ({Text, onClick, className, disabled}) => {
     const classes = useStyles();
 
   return (
@@ -11,6 +11,7 @@ const InputField = ({Text, onClick, className}) => {
     disableElevation
         variant='contained'
         onClick={onClick} 
+        disabled={disabled}
         className={`${className} ${classes.button}`}>
         {Text}
     </Button>

@@ -23,7 +23,6 @@ const LandingPage = ({props}) => {
     
     return(
         <Box className={classes.landingPageContainer}> 
-            <NavBar/>
             <Box className={classes.landingPage}> 
                 <Box className={classes.landingPage_topContent}>
                     <Box className={classes.landingPage_topContentLeft}>

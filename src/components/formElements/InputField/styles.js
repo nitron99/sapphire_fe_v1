@@ -23,6 +23,12 @@ const useStyles = makeStyles((theme) => ({
             borderColor: "#4B0767"
         }
 
+    },
+    input_error: {
+        fontFamily: "Poppins",
+        position : "absolute",
+        bottom: "0px",
+        fontSize: "13px",
     }
 }))
 

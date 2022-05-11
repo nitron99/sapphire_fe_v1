@@ -23,6 +23,10 @@ input[type="number"] {
   max-width: 7px;
 }
 
+::-webkit-scrollbar:horizontal {
+  height: 7px;
+}
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #00cc99; 

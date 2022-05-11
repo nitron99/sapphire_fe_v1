@@ -13,5 +13,23 @@ API.interceptors.request.use((req) => {
 
 export const login = (formData) => API.post(`/user/login` , formData);
 export const signup = (formData) => API.post(`/user/signup` , formData);
-export const nftupload = (formData) => API.post(`collection/createCollection`, formData);
-export const getNFTbyID = (id) => API.get(`collection/${id}`); 
+// export const nftupload = (formData) => API.post(`/collection/createCollection`, formData);
+export const nftUpload = (formData) => API.post(`/collection/createCollection`, formData);
+export const getNFTbyID = (id) => API.get(`/collection/${id}`); 
+export const getUser = () => API.get(`/user/me`);
+export const getUserbyID = (id) => API.get()
+export const getMyNFT = () => API.get(`/collection/myCollection`);
+
+//demo
+export const getAllNFT = () => API.get(`/collection`);
+
+// trading APIs
+export const getTradeByID = (id) => API.get(`/trade/artTrade/${id}`);
+
+//favourites
+export const getFavouriteNFT = () => API.get(`/favourites/myFavourites`);
+export const createFavourite = (formData) => API.post(`/favourites/createFavourites`, formData);
+
+//bidding
+export const createBid = (formData) => API.post(`/auction/createBid`, formData)
+export const getBidData = (id) => API.get(`/auction/ArtBid/${id}`)

@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import useStyles from './styles';
-import { Link , useNavigate} from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { Link , useNavigate, useLocation} from "react-router-dom";
+import clsx from 'clsx';
+import { useDispatch, useSelector } from 'react-redux';
 import { Logout } from '../../store/actions/AuthAction';
 import { Box, Typography, Grid,Avatar, Menu, MenuItem, ListItemIcon} from '@mui/material';
 import Divider from '@mui/material/Divider';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import ImageIcon from '@mui/icons-material/ImageOutlined';
 import Receipt from '@mui/icons-material/ReceiptOutlined';
 import Settings from '@mui/icons-material/SettingsOutlined';
 import Logouts from '@mui/icons-material/Logout';
+import { GetFavouriteNFT } from '../../store/actions/NftAction';
 
 const NavBar = () => {
     const classes = useStyles();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const location = useLocation();
     const user = JSON.parse(sessionStorage.getItem("user"));
-
+    const { favouriteData } = useSelector((state) => (state.nft))
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -25,8 +29,38 @@ const NavBar = () => {
     const handleClose = () => {
       setAnchorEl(null);
     };
-    const onLogoutHandler = () => { dispatch(Logout(navigate)) }
-    const onProfileHandler = () => { navigate('/dashboard') }
+    
+    const route = location.pathname.split("/");
+    console.log(route)
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [location]);
+
+    useEffect(() => {
+      if(Object.keys(favouriteData).length === 0){
+        dispatch(GetFavouriteNFT())
+      }
+    },[])
+
+    const onRedirectHandler = (e) => {
+      switch(e){
+        case 0: navigate("/dashboard")
+          break;
+        case 1: navigate("/wallet")
+          break;
+        case 2: navigate("/transactions")
+          break;
+        case 3: navigate("/holdings")
+          break;
+        case 4: navigate("/favourites")
+          break;
+        case 5: navigate("/settings")
+          break;
+        case 6: dispatch(Logout(navigate)) 
+          break;
+        default:
+      }
+    }
 
   return (
     <Box className={classes.navbar_container}>
@@ -36,10 +70,38 @@ const NavBar = () => {
             ?
             <Box className={classes.navbar_content}>
               
-                <Link to="/home" className={classes.links}><Typography className={classes.navbar_links_item}>Home</Typography></Link>
-                <Link to="/explore" className={classes.links}><Typography className={classes.navbar_links_item}>Explore</Typography></Link>
-                <Link to="/trending" className={classes.links}><Typography className={classes.navbar_links_item}>Trending</Typography></Link>
-                <Link to="/create" className={classes.links}><Typography className={classes.navbar_links_item}>Create</Typography></Link>
+                <Link to="/home" className={classes.links}>
+                  <Typography
+                    className={clsx(classes.navbar_links_item, {
+                      [classes.navbar_links_itemSelected]: route[1] === "home",
+                    })}>
+                    Home
+                  </Typography>
+                </Link>
+                <Link to="/explore" className={classes.links}>
+                  <Typography
+                    className={clsx(classes.navbar_links_item, {
+                      [classes.navbar_links_itemSelected]: route[1] === "explore",
+                    })}>
+                    Explore
+                  </Typography>
+                </Link>
+                <Link to="/trending" className={classes.links}>
+                  <Typography 
+                    className={clsx(classes.navbar_links_item, {
+                      [classes.navbar_links_itemSelected]: route[1] === "trending",
+                    })}>
+                    Trending
+                  </Typography>
+                </Link>
+                <Link to="/create" className={classes.links}>
+                  <Typography 
+                    className={clsx(classes.navbar_links_item, {
+                      [classes.navbar_links_itemSelected]: route[1] === "create",
+                    })}>
+                    Create
+                  </Typography>
+                </Link>
                 <AccountCircleOutlinedIcon onClick={handleClick} fontSize="large"/>
                 <Menu
                   anchorEl={anchorEl}
@@ -65,34 +127,61 @@ const NavBar = () => {
                   anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
                   <MenuItem
-                  onClick={onProfileHandler}>
-                    <Avatar /> Profile
-                  </MenuItem>
-                  <Divider />
-                  <MenuItem>
-                    <ListItemIcon>
-                      <Receipt fontSize="small" />
-                    </ListItemIcon>
-                    Transactions
-                  </MenuItem>
-                  <MenuItem>
-                    <ListItemIcon>
-                      <FavoriteBorderOutlinedIcon fontSize="small" />
-                    </ListItemIcon>
-                    Favourites
-                  </MenuItem>
-                  <MenuItem>
-                    <ListItemIcon>
-                      <Settings fontSize="small" />
-                    </ListItemIcon>
-                    Settings
+                   onClick={() => onRedirectHandler(0)}
+                  sx={{color : "#000"}}>
+                    <Avatar /> 
+                    <Typography >Profile</Typography>
                   </MenuItem>
                   <MenuItem
-                    onClick={onLogoutHandler}>
+                   onClick={() => onRedirectHandler(1)}
+                  sx={{color : "#000"}}>
+                    <Typography fontSize={14} fontWeight={600}>Balance - ₹{user?.data?.user?.wallet/10}</Typography>
+                  </MenuItem>
+                  <Divider />
+                  <MenuItem
+                    onClick={() => onRedirectHandler(2)}>
                     <ListItemIcon>
-                      <Logouts fontSize="small" />
+                      <Receipt sx={{color : "#000"}} />
                     </ListItemIcon>
-                    Logout
+                    <Typography sx={{color : "#000"}}>
+                      Transactions
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem
+                   onClick={() => onRedirectHandler(3)}>
+                    <ListItemIcon>
+                      <ImageIcon sx={{color : "#000"}}/>
+                    </ListItemIcon>
+                    <Typography sx={{color : "#000"}}>
+                      Holdings
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem
+                   onClick={() => onRedirectHandler(4)}>
+                    <ListItemIcon>
+                      <FavoriteBorderOutlinedIcon sx={{color : "#000"}}/>
+                    </ListItemIcon>
+                    <Typography sx={{color : "#000"}}>
+                      Favourites
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem
+                   onClick={() => onRedirectHandler(5)}>
+                    <ListItemIcon>
+                      <Settings sx={{color : "#000"}}/>
+                    </ListItemIcon>
+                    <Typography sx={{color : "#000"}}>
+                      Settings
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => onRedirectHandler(6)}>
+                    <ListItemIcon>
+                      <Logouts sx={{color : "#000"}} />
+                    </ListItemIcon>
+                    <Typography sx={{color : "#000"}}>
+                      Logout
+                    </Typography>
                   </MenuItem>
                 </Menu>
             </Box>

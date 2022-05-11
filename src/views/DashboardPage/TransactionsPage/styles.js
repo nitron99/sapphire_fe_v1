@@ -1,13 +1,14 @@
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
-    homepage_container:{
+    transactions_container:{
         width : "100%",
         maxWidth: "100vw",
         height: "100%",
+        minHeight: "100vh",
         backgroundColor: theme.palette.background.white
     },
-    homepage: {
+    transactions: {
         paddingTop: "72px",
         width : "1300px",
         [theme.breakpoints.down('xl')] : {
@@ -28,31 +29,6 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
     },
-    homepage_row1: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        overflow: "auto",
-        paddingBottom: '20px'
-
-    },
-    homepage_row2: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        overflow: "auto",
-        paddingBottom: '20px'
-
-    },
-    homepage_row3: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        overflow: "auto",
-        paddingBottom: '20px'
-
-    },
-
 }))
 
 export default useStyles

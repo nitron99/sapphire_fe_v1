@@ -1,22 +1,48 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useStyles from './styles';
-import { Link , useNavigate} from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { Logout } from '../../store/actions/AuthAction';
-import { Box, Typography, Grid,Avatar, Menu, MenuItem, ListItemIcon} from '@mui/material';
+import { useNavigate} from "react-router-dom";
+import { Box, Typography} from '@mui/material';
 import Divider from '@mui/material/Divider';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import Receipt from '@mui/icons-material/ReceiptOutlined';
-import Settings from '@mui/icons-material/SettingsOutlined';
-import Logouts from '@mui/icons-material/Logout';
 
 const Footer = () => {
     const classes = useStyles();
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const user = JSON.parse(sessionStorage.getItem("user"));
 
+    const onRedirectHandler1 = (e) => {
+      switch(e){
+        case 0: navigate("/explore")
+          break;
+        case 1: navigate("/explore")
+          break;
+        case 2: navigate("/explore")
+          break;
+        case 3: navigate("/explore")
+          break;
+        case 4: navigate("/explore")
+          break;
+        case 5: navigate("/explore")
+          break;
+        case 6: navigate("/explore")
+          break;
+        default:
+      }
+    }
+
+    const onRedirectHandler2 = (e) => {
+      switch(e){
+        case 0: navigate("/dashboard")
+          break;
+        case 1: navigate("/transactions")
+          break;
+        case 2: navigate("/holdings")
+          break;
+        case 3: navigate("/favourites")
+          break;
+        case 4: navigate("/settings")
+          break;
+        default:
+      }
+    }
 
   return (
     <Box className={classes.footer_container}>
@@ -32,57 +58,85 @@ const Footer = () => {
               </Box>
               <Box className={classes.footer_contentRight}>
                 <Box className={classes.footer_contentRight_col1}>
-                  <Typography fontSize={16} fontWeight={600} mb="20px">
-                      MarketPlace
-                  </Typography>
-                  <Typography fontSize={15} mb="20px">
-                      All NFTs
-                  </Typography>
-                  <Typography fontSize={15} mb="20px">
-                      Art
-                  </Typography>
-                  <Typography fontSize={15} mb="20px">
-                      Collectibles
-                  </Typography>
-                  <Typography fontSize={15} mb="20px">
-                      Music
-                  </Typography>
-                  <Typography fontSize={15} mb="20px">
-                      Photography
-                  </Typography>
-                  <Typography fontSize={15} mb="20px">
-                      Sports
-                  </Typography>
-                  <Typography fontSize={15} mb="20px">
-                      Utility
-                  </Typography>
+                  <Box>
+                    <Typography fontSize={16} fontWeight={600} mb="20px">
+                        MarketPlace
+                    </Typography>
+                    <Typography fontSize={15} mb="20px"
+                     onClick={() => onRedirectHandler1(0)}
+                     sx={{cursor: "pointer"}}>
+                        All NFTs
+                    </Typography>
+                    <Typography fontSize={15} mb="20px"
+                     onClick={() => onRedirectHandler1(1)}
+                     sx={{cursor: "pointer"}}>
+                        Art
+                    </Typography>
+                    <Typography fontSize={15} mb="20px"
+                     onClick={() => onRedirectHandler1(2)}
+                     sx={{cursor: "pointer"}}>
+                        Collectibles
+                    </Typography>
+                    <Typography fontSize={15} mb="20px"
+                     onClick={() => onRedirectHandler1(3)}
+                     sx={{cursor: "pointer"}}>
+                        Music
+                    </Typography>
+                    <Typography fontSize={15} mb="20px"
+                     onClick={() => onRedirectHandler1(4)}
+                     sx={{cursor: "pointer"}}>
+                        Photography
+                    </Typography>
+                    <Typography fontSize={15} mb="20px"
+                     onClick={() => onRedirectHandler1(5)}
+                     sx={{cursor: "pointer"}}>
+                        Sports
+                    </Typography>
+                    <Typography fontSize={15} mb="20px"
+                     onClick={() => onRedirectHandler1(6)}
+                     sx={{cursor: "pointer"}}>
+                        Utility
+                    </Typography>
+                  </Box>
                 </Box>
                 <Box className={classes.footer_contentRight_col2}>
-                  <Typography fontSize={16} fontWeight={600} mb="20px">
-                    My Account
-                  </Typography>
-                  <Typography fontSize={15} mb="20px">
-                    Profile
-                  </Typography>
-                  <Typography fontSize={15} mb="20px">
-                    Transactions
-                  </Typography>
-                  <Typography fontSize={15} mb="20px">
-                    Favourites
-                  </Typography>
-                  <Typography fontSize={15} mb="20px">
-                    Holdings
-                  </Typography>
-                  <Typography fontSize={15} mb="20px">
-                    Settings
-                  </Typography>
+                  <Box>
+                    <Typography fontSize={16} fontWeight={600} mb="20px">
+                      My Account
+                    </Typography>
+                    <Typography fontSize={15} mb="20px"
+                      onClick={() => onRedirectHandler2(0)}
+                      sx={{cursor: "pointer"}}>
+                      Profile
+                    </Typography>
+                    <Typography fontSize={15} mb="20px"
+                      onClick={() => onRedirectHandler2(1)}
+                      sx={{cursor: "pointer"}}>
+                      Transactions
+                    </Typography>
+                    <Typography fontSize={15} mb="20px"
+                      onClick={() => onRedirectHandler2(2)}
+                      sx={{cursor: "pointer"}}>
+                      Holdings
+                    </Typography>
+                    <Typography fontSize={15} mb="20px"
+                      onClick={() => onRedirectHandler2(3)}
+                      sx={{cursor: "pointer"}}>
+                      Favourites
+                    </Typography>
+                    <Typography fontSize={15} mb="20px"
+                      onClick={() => onRedirectHandler2(4)}
+                      sx={{cursor: "pointer"}}>
+                      Settings
+                    </Typography>
+                  </Box>
                 </Box>
               </Box>
             </Box>
             <Divider sx={{backgroundColor: "white"}}/>
             <Box pt="20px" pl="20px">
               <Typography fontSize={15}>
-              © 2022, Developed By QuadCORE
+              © 2022, Developed By Arpan, Hemant, Chirag and Nitin
               </Typography>
             </Box>
         </Box>
