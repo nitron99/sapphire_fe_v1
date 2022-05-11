@@ -24,6 +24,7 @@ const CreatePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const imgData = new FormData();
+  const [image, setImage] = useState("")
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState(data);
   const [enableCreate, setEnableCreate] = useState(false);
@@ -32,19 +33,20 @@ const CreatePage = () => {
   const onUploadHandler = (e) => {
       console.log(e.target.files[0]);
       setFileName(e.target.files[0].name)
-      imgData.append("image", e.target.files[0]);
-      console.log(imgData.has("image"))
+      setImage(e.target.files[0])
+      
     }
 
   const uploader = () => {
-    
     console.log(imgData.has("image"))
     const { errors, isValid } = creatNFTvalidator(formData);
     setErrors(errors)
     if (isValid) {
+      imgData.append("image", image );
       imgData.append("startingPrice", formData.startingPrice)
       imgData.append("name", formData.name )
-      // dispatch(NftUploader(imgData))
+      console.log(imgData.has("image"))
+      dispatch(NftUploader(imgData))
       setEnableCreate(false);
     }
   }
