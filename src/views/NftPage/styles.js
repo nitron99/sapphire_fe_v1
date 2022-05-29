@@ -78,7 +78,7 @@ export default makeStyles((theme) => ({
     },
     nftPage_content3: {
         width: "100%",
-        minHeight:"600px",
+        minHeight:"200px",
         // height: "100%",
         marginTop: "20px",
         borderRadius: "20px",

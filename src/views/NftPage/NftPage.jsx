@@ -104,8 +104,8 @@ const NftPage = () => {
                 Graph
                 <LineChart data={nftChartData}/>
             </Box> */}
-            <Box className={classes.nftPage_content3}>
-                <Typography fontSize={20} fontWeight={600}>Bid History</Typography>
+            <Box className={classes.nftPage_content3} >
+                <Typography fontSize={20} fontWeight={600} mb="20px">Bid History</Typography>
                 {nftBidData?.data?.map((item, index) => 
                     <Box key={index} className={classes.nftPage_content_bids}>
                         <Box mr="50px">
@@ -123,8 +123,8 @@ const NftPage = () => {
             setOpen={setSellOpen} 
             title="Sell NFT" 
             open={sellOpen} 
-            id={user?.data?.user?._id}
-            artId={nftData?.data?.data?._id}
+            
+           
             amount={nftData?.data?.data?.currentPrice}/>
       </Box>
     )

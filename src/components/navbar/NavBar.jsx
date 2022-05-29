@@ -133,11 +133,11 @@ const NavBar = () => {
                     <Avatar /> 
                     <Typography >Profile</Typography>
                   </MenuItem>
-                  <MenuItem
+                  {/* <MenuItem
                    onClick={() => onRedirectHandler(1)}
                   sx={{color : "#000"}}>
                     <Typography fontSize={14} fontWeight={600}>Balance - ₹{users?.data?.user?.wallet/100}</Typography>
-                  </MenuItem>
+                  </MenuItem> */}
                   <Divider />
                   <MenuItem
                     onClick={() => onRedirectHandler(2)}>

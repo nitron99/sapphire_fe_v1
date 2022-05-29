@@ -10,23 +10,26 @@ import { CreateTrade } from "../../store/actions/TradeAction";
 
 const Data = { bid: ""};
 
-const SellModel = ({open, setOpen, title, id, artId, amount}) => {
+const SellModel = ({open, setOpen, title, amount}) => {
   const scroll = "paper";
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [enableSave, setEnableSave] = useState(false);
+  const [enableSave, setEnableSave] = useState(true);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const { bidData } = useSelector((state) => (state.trade)) 
   const [formData, setFormData] = useState(Data);
   const [selected, setSelected] = useState(-1);
-
+  const user = JSON.parse(sessionStorage.getItem("user")) 
+  const id = "";
   const handleClose = () => {
     setOpen(false);
     setSelected(-1)
     setEnableSave(false)
+    
   };
 
+  
   const descriptionElementRef = React.useRef(null);
 
   useEffect(() => {
@@ -36,9 +39,10 @@ const SellModel = ({open, setOpen, title, id, artId, amount}) => {
         descriptionElement.focus();
       }
     }
-    setEnableSave(false);
+    setEnableSave(true);
     setLoading(false);
     setErrors({});
+    console.log(user)
   }, [open]);
 
 //   useEffect(() => {
@@ -51,23 +55,7 @@ const SellModel = ({open, setOpen, title, id, artId, amount}) => {
 
   const handleSubmit = (e) => {
     if (enableSave) {
-        if(selected === 0)
-        {
-            setTimeout(() => {  
-                setLoading(true)
-                setFormData({...formData, buyer: id , artId: artId, transaction: amount})
-                console.log(formData)
-                dispatch(CreateTrade(formData, setLoading))
-             }, 2000);
-        }else{
-            setTimeout(() => {  
-                setLoading(true)
-                setFormData({...formData, buyer: id , artId: artId, transaction: amount})
-                console.log(formData)
-                dispatch(CreateTrade(formData, setLoading))
-            }, 1000);
-            // dispatch(CreateTrade(formData, setLoading))
-        }
+      dispatch(CreateTrade({ bid: user?.data?.user?._id }, setLoading))
     }
     setEnableSave(false);
   };
@@ -100,7 +88,7 @@ const SellModel = ({open, setOpen, title, id, artId, amount}) => {
           {/* <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }} className={classes.changepwd_form}> */}
           <Typography fontSize={20} fontWeight={600} color="#000">Select Gas Price</Typography>
            <Box className={classes.sell_conatiner}>
-            <Box 
+            {/* <Box 
                 onClick={() => onSelectHandler(0)}
                 className={clsx(classes.sell_fast, {
                     [classes.sell_selected]:selected === 0
@@ -115,7 +103,7 @@ const SellModel = ({open, setOpen, title, id, artId, amount}) => {
                 })}>
                 <Typography fontSize={20} fontWeight={600}>Slow</Typography>
                 <Typography fontSize={16} fontWeight={500}>{amount}</Typography>
-            </Box>
+            </Box> */}
            </Box>
 
               <LoadingButton

@@ -43,17 +43,17 @@ const LandingPage = ({props}) => {
                         <Typography className={classes.landingPage_text1} fontSize={30} fontWeight={700}>Explore Ethereum BlockChain</Typography>
                         <Typography className={classes.landingPage_text1} fontSize={18} fontWeight={500}>Built on Ethereum blockchain architecture</Typography>
                     </Box>
-                    <a href="https://solana.com/developers" rel="noreferrer" target="_blank" className={classes.landingPage_link}>
+                    <a href="https://ethereum.org/en/developers/" rel="noreferrer" target="_blank" className={classes.landingPage_link}>
                         <Buttons className={classes.landingPage_exploreBtn}>Explore</Buttons>
                     </a>
                 </Box>
 
-                <Box sx={{minHeight: "500px"}} className={classes.landingPage_bottomContent1}>
+                {/* <Box sx={{minHeight: "500px"}} className={classes.landingPage_bottomContent1}>
                     <Typography fontSize={30} fontWeight={700}>Top Charts</Typography>
                 </Box>
                 <Box sx={{minHeight: "500px", backgroundColor:"white"}} className={classes.landingPage_bottomContent2}>
                     <Typography fontSize={30} fontWeight={700}>Trending</Typography>
-                </Box>
+                </Box> */}
             </Box>
         </Box>
     )
